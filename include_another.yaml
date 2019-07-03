@@ -1,0 +1,13 @@
+---
+- name: "Lab exercise - Include another yaml"
+  hosts: webservices
+  vars:
+    myname: "Swetha-playbook"
+    mycompany: "hp-playbook"
+  tasks:
+  - debug:
+      msg:
+      - "Inside playbook debug mode: {{ myname }} trying including loop.yaml"
+  - name: Include a play after another play
+    include: loop.yaml
+...

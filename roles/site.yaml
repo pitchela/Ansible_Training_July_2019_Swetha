@@ -1,0 +1,8 @@
+---
+- hosts: webservices
+  sudo: yes
+  gather_facts: true
+  roles:
+    - role: webserver
+
+...

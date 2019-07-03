@@ -1,0 +1,17 @@
+---
+- name: "Lab exercise 4 - 1"
+  hosts: webservices
+  vars:
+    myname: "Swetha-playbook"
+    mycompany: "hp-playbook"
+
+  tasks:
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: /tmp
+    register: find_output
+
+  - debug:
+      var: find_output
+...

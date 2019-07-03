@@ -1,0 +1,4 @@
+[webservices]
+10.76.137.151 ansible_become=yes ansible_user=tester ansible_password=tester1 ansible_become_pass=tester1 myname=swetha-behavi
+
+

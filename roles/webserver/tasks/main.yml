@@ -1,0 +1,55 @@
+---
+# tasks file for webserver
+
+# Install webserver httpd
+# only if RHEL
+  - name: Install a Package(WebServer)
+    yum:  name= {{packagename}}  state=present
+    when: ansible_os_family == "RedHat"
+
+
+# Create Group
+  - name: Create one linux group called “deloitte” 
+    group: name=deloitte state=present
+
+# Create User
+  - name: Create one user called “deploy”
+    user: name=deploy group=deloitte
+
+# Install git ntp and vim using looping
+#  - name: Install common software
+#      apt: pkg={{ item }} state=installed 
+#      with_items:
+#         - ntp
+#         - vim
+#         - git
+
+
+# Run one Shell Script. 
+# Whatever the output of Shell Script should register into vars and display in index.html 
+
+  - name: Execute shell script scr1
+    shell: scr1.sh
+    args:
+      chdir: /tmp
+    register: shell_output
+
+#Write a handler for httpd.conf changes for restartting a httpd
+  - name: Restart apache notify
+    service:  name=httpd state=restarted
+    notify: "restart apache"
+
+# Copy index.j2 into /var/www/html Use Template
+#  - name: copy index to /var/www/html directory
+#    copy:
+#      src:index.j2
+#      dest:/var/www/html
+
+# Copy a httpd.j2 into /etc/httpd/conf/httpd.conf and change the port from 80 to 8080
+#  - name: copy httpd.j2 to /etc/httpd/conf/httpd.conf
+#      src:httpd.j2
+#      dest:/etc/httpd/conf/httpd.conf
+
+
+
+...

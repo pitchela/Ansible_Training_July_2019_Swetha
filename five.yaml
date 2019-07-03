@@ -1,0 +1,12 @@
+---
+- name: "Lab exercise 4 - 5"
+  hosts: webservices
+  tasks:
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    file: path=/var/www/html state=directory
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    file: dest=/var/www/html/index.html mode=600 state=touch
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    lineinfile: dest=/var/www/html/index.html line='<html> <h1> Welcome to HP Ansible classes </h1>  </html> '
+
+...

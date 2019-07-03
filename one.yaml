@@ -1,0 +1,14 @@
+---
+- name: "Lab exercise 4 - 1"
+  hosts: webservices
+  vars:
+    myname: "Swetha-playbook"
+    mycompany: "hp-playbook"
+  tasks:
+  - name: Create a group called deploy
+    group: name=deploy state=present
+
+  - debug:
+      msg:
+      - "Inside playbook debug mode: {{ myname }}"
+...

@@ -1,0 +1,44 @@
+---
+- name: "Lab exercise 4 - 1"
+  hosts: common
+  hosts: db
+  hosts: webservices
+  vars:
+    myname: "Swetha-playbook"
+    mycompany: "hp-playbook"
+
+  vars_files:
+    - "external_vars.yaml"
+
+  vars_prompt:
+    - name: "myname"
+      private: no
+      prompt: "What is your name???"
+    - name: "mycompany"
+      private: no
+      prompt: "What is your company???"
+
+  tasks:
+  - name: Create a group called deploy
+    group: name=deploy state=present
+
+  - name: include default step variables
+    include_vars: include_external_vars.yaml
+
+  - debug:
+      msg:
+      - "Inside playbook debug mode: {{ myname }}"
+      - "Inside playbook debug mode: {{ mycompany }}"
+      - "Inside playbook debug mode myage defined only in inventory file: {{ myage }}"
+
+  - debug:
+      var: ansible_product_uuid 
+
+  - debug: var=ansible_product_uuid
+  - debug: msg="{{ mycompany }}  {{ myage }} {{ myname }}"
+  - debug: msg={{ mycompany }}
+  - debug: msg={{ myage }}
+  - debug: msg={{ myname }}
+  - debug: msg={{ ansible_product_uuid }}
+
+...

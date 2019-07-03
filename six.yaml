@@ -1,0 +1,8 @@
+---
+- name: "Lab exercise 4 - 6"
+  hosts: webservices
+  tasks:
+  - name: Command to reboot a machine.
+    reboot: 
+
+...

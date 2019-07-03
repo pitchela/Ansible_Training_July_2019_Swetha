@@ -1,0 +1,7 @@
+---
+- name: "Lab exercise 4 - 3"
+  hosts: webservices
+  tasks:
+  - name: Command to install package named httpd
+    yum:  name=httpd state=present
+...

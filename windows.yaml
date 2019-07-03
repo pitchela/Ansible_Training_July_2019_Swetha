@@ -1,0 +1,11 @@
+---
+- name: "Lab exercise 5"
+  hosts: win
+  tasks:
+  - name: Create directory Swetha
+    win_file: path=C:\hp\Swetha state=directory
+  - name: create the file 
+    win_file: path=C:\hp\Swetha\index.html state=touch
+  - name: write the contents of the file
+    win_lineinfile: path=C:\hp\Swetha\index.html  line='<html> <h1> Welcome to HPE Ansible classes </h1>  </html> '
+...

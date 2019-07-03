@@ -1,0 +1,29 @@
+---
+- name: "Lab exercise 5"
+  hosts: both
+  tasks:
+  - name: Create directory Swetha
+    win_file: path=C:\hp\Swetha state=directory
+    when: ansible_os_family != "RedHat"
+
+  - name: create the file 
+    win_file: path=C:\hp\Swetha\index.html state=touch
+    when: ansible_os_family != "RedHat"
+
+  - name: write the contents of the file
+    win_lineinfile: path=C:\hp\Swetha\index.html  line='<html> <h1> This is Windows... </h1>  </html> '
+    when: ansible_os_family != "RedHat"
+
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    file: path=/var/www/html state=directory
+    when: ansible_os_family == "RedHat"
+
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    file: dest=/var/www/html/index.html mode=600 state=touch
+    when: ansible_os_family == "RedHat"
+  - name: Commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+    lineinfile: dest=/var/www/html/index.html line='<html> <h1> This is RedHat Linux</h1>  </html> '
+    when: ansible_os_family == "RedHat"
+
+
+...

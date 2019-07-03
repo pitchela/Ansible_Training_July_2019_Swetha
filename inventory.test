@@ -1,0 +1,28 @@
+[webservices]
+10.76.137.151 ansible_become=yes ansible_user=tester ansible_password=tester1 ansible_become_pass=tester1
+
+[db]
+10.76.138.14 ansible_become=yes ansible_user=tester ansible_password=tester1 ansible_become_pass=tester1
+127.0.0.1 ansible_connection=local
+
+[common:children]
+db
+webservices
+
+
+
+[webservices:vars]
+myname=swetha-inven
+mycompany=hp-inven
+myage=8-inv
+
+[win]
+ec2-13-233-119-65.ap-south-1.compute.amazonaws.com ansible_user=Administrator ansible_password=WsgPP?V%&JWvp.AwfKcacQp@22I!8QF! ansible_connection=winrm ansible_winrm_transport=basic ansible_winrm_server_cert_validation=ignore
+
+[junk]
+10.76.138.15
+
+[both]
+ec2-13-233-119-65.ap-south-1.compute.amazonaws.com ansible_user=Administrator ansible_password=WsgPP?V%&JWvp.AwfKcacQp@22I!8QF! ansible_connection=winrm ansible_winrm_transport=basic ansible_winrm_server_cert_validation=ignore
+10.76.137.151 ansible_become=yes ansible_user=tester ansible_password=tester1 ansible_become_pass=tester1
+10.76.138.14 ansible_become=yes ansible_user=tester ansible_password=tester1 ansible_become_pass=tester1

@@ -1,0 +1,8 @@
+---
+- name: "Lab exercise 4 - 7"
+  hosts: webservices
+  tasks:
+  - name: Commands to install a package called “git”, “wget”.
+    yum: name=git,wget state=present
+
+...
